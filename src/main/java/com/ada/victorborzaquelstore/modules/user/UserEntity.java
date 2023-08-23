@@ -2,13 +2,15 @@ package com.ada.victorborzaquelstore.modules.user;
 
 import com.ada.victorborzaquelstore.modules.address.AddressEntity;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
+import lombok.*;
 
 import java.util.UUID;
 
 @Entity
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Table(name = "USERS")
 public class UserEntity {
     @Id
@@ -20,13 +22,13 @@ public class UserEntity {
 
     @Column(name = "EMAIL", unique = true)
     private String email;
-
-    @Column(name = "PASSWORD")
-    private String password;
-
-    @OneToOne()
-    @JoinColumn(name = "ADDRESS_ID")
-    private AddressEntity address;
+//
+//    @Column(name = "PASSWORD")
+//    private String password;
+//
+//    @OneToOne()
+//    @JoinColumn(name = "ADDRESS_ID")
+//    private AddressEntity address;
 
     @Column(name = "CPF", unique = true)
     private String cpf;

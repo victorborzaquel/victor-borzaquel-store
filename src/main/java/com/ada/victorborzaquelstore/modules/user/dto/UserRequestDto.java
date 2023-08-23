@@ -1,8 +1,14 @@
 package com.ada.victorborzaquelstore.modules.user.dto;
 
-public record UserRequestDto(
-        String name,
-        String email,
-        String cpf
-) {
+import lombok.*;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
+public class UserRequestDto {
+    private String name;
+    private String email;
+    private String cpf;
 }

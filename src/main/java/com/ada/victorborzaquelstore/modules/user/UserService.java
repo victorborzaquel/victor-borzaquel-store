@@ -19,6 +19,7 @@ public class UserService {
     }
 
     public UserResponseDto create(UserRequestDto userRequestDto) {
+        System.out.println(userRequestDto);
         UserEntity entity = userMapper.toEntity(userRequestDto);
         UserEntity response = userRepository.save(entity);
         return userMapper.toResponseDto(response);
