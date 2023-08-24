@@ -6,31 +6,32 @@ import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "ADDRESS")
+@Table(name = "addresses")
 public class AddressEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.UUID)
+  private UUID id;
 
-    @OneToOne
-    @JoinColumn(name = "USER_ID")
-    private UserEntity user;
+  @Column(name = "street")
+  private String street;
 
-    @Column(name = "STREET")
-    private String street;
+  @Column(name = "number")
+  private String number;
 
-    @Column(name = "NUMBER")
-    private String number;
+  @Column(name = "complement")
+  private String complement;
 
-    @Column(name = "COMPLEMENT")
-    private String complement;
+  @Column(name = "zipcode")
+  private String zipcode;
 
-    @Column(name = "ZIPCODE")
-    private String zipcode;
+  @Column(name = "city")
+  private String city;
 
-    @Column(name = "CITY")
-    private String city;
+  @Column(name = "state")
+  private String state;
 
-    @Column(name = "STATE")
-    private String state;
+  @ManyToOne
+  @JoinColumn(name = "user_id")
+  private UserEntity user;
+
 }

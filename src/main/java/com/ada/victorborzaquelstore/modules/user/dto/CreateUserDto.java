@@ -5,10 +5,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Setter
-@ToString
-public class UserRequestDto {
-    private String name;
-    private String email;
-    private String cpf;
+public class CreateUserDto {
+  private String name;
+  private String email;
+  private String cpf;
 }

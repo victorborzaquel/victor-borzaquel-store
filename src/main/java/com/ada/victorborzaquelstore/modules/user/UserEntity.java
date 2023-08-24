@@ -1,9 +1,14 @@
 package com.ada.victorborzaquelstore.modules.user;
 
 import com.ada.victorborzaquelstore.modules.address.AddressEntity;
+import com.ada.victorborzaquelstore.modules.order.OrderEntity;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -11,25 +16,28 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "USERS")
+@Table(name = "users")
 public class UserEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.UUID)
+  private UUID id;
 
-    @Column(name = "NAME")
-    private String name;
+  @Column(name = "name")
+  private String name;
 
-    @Column(name = "EMAIL", unique = true)
-    private String email;
-//
-//    @Column(name = "PASSWORD")
-//    private String password;
-//
-//    @OneToOne()
-//    @JoinColumn(name = "ADDRESS_ID")
-//    private AddressEntity address;
+  @Column(name = "email", unique = true)
+  private String email;
 
-    @Column(name = "CPF", unique = true)
-    private String cpf;
+  @Column(name = "password")
+  private String password;
+
+  @Column(name = "cpf", unique = true)
+  private String cpf;
+
+  @OneToMany(mappedBy = "user")
+  private List<AddressEntity> addresses;
+
+  @OneToMany(mappedBy = "user")
+  private List<OrderEntity> orders;
+
 }

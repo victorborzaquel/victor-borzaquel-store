@@ -1,24 +1,33 @@
 package com.ada.victorborzaquelstore.modules.product;
 
 import jakarta.persistence.*;
+import lombok.*;
 
-import java.util.List;
 import java.util.UUID;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "PRODUCTS")
+@ToString
+@Table(name = "products")
 public class ProductEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
 
-    @Column(name = "TITLE", unique = true)
-    private String title;
+  @Id
+  @GeneratedValue(strategy = GenerationType.UUID)
+  private UUID id;
 
-    @Column(name = "DESCRIPTION")
-    private String description;
+  @Column(name = "title")
+  private String title;
 
-    @Column(name = "PRICE")
-    private Double price;
+  @Column(name = "description")
+  private String description;
+
+  @Column(name = "price")
+  private Double price;
+
+  @Column(name = "stock")
+  private Integer stock;
 
 }
