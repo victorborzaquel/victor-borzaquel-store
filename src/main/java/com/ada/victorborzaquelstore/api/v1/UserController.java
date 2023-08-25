@@ -1,8 +1,8 @@
 package com.ada.victorborzaquelstore.api.v1;
 
-import com.ada.victorborzaquelstore.modules.user.dto.CreateUserDto;
-import com.ada.victorborzaquelstore.modules.user.dto.ResponseUserDto;
-import com.ada.victorborzaquelstore.modules.user.UserService;
+import com.ada.victorborzaquelstore.modules.user.dto.CreateUserDTO;
+import com.ada.victorborzaquelstore.modules.user.dto.ResponseUserDTO;
+import com.ada.victorborzaquelstore.modules.user.services.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +18,7 @@ public class UserController {
   }
 
   @PostMapping
-  public ResponseUserDto create(@RequestBody CreateUserDto createUserDto) {
+  public ResponseUserDTO create(@RequestBody CreateUserDTO createUserDto) {
     return userService.create(createUserDto);
   }
 

@@ -1,9 +1,11 @@
 package com.ada.victorborzaquelstore.api.v1;
 
-import com.ada.victorborzaquelstore.modules.product.ProductService;
-import com.ada.victorborzaquelstore.modules.product.dto.CreateProductDto;
-import com.ada.victorborzaquelstore.modules.product.dto.ResponseProductDto;
-import com.ada.victorborzaquelstore.modules.product.dto.UpdateProductDto;
+import com.ada.victorborzaquelstore.modules.product.services.ProductService;
+import com.ada.victorborzaquelstore.modules.product.dto.CreateProductDTO;
+import com.ada.victorborzaquelstore.modules.product.dto.ResponseProductDTO;
+import com.ada.victorborzaquelstore.modules.product.dto.UpdateProductDTO;
+import com.ada.victorborzaquelstore.shared.providers.mail.models.MailProvider;
+import com.ada.victorborzaquelstore.shared.providers.mail.dto.MailProviderDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,13 +18,17 @@ public class ProductController {
 
   private final ProductService productService;
 
+  private final MailProvider mailProvider;
+
   @PostMapping
-  public ResponseProductDto create(@RequestBody CreateProductDto dto) {
+  public ResponseProductDTO create(@RequestBody CreateProductDTO dto) {
+    var mail = new MailProviderDTO("name", "email", "subject");
+    this.mailProvider.sendMail(mail);
     return this.productService.create(dto);
   }
 
-  @PatchMapping("{id}")
-  public ResponseProductDto update(@PathVariable UUID id, @RequestBody UpdateProductDto dto) {
+  @PutMapping("{id}")
+  public ResponseProductDTO update(@PathVariable UUID id, @RequestBody UpdateProductDTO dto) {
     return this.productService.update(id, dto);
   }
 }
