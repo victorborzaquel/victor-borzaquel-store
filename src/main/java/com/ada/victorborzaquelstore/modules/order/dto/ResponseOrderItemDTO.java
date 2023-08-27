@@ -1,6 +1,6 @@
 package com.ada.victorborzaquelstore.modules.order.dto;
 
-import com.ada.victorborzaquelstore.modules.product.entities.ProductEntity;
+import com.ada.victorborzaquelstore.modules.product.ProductEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

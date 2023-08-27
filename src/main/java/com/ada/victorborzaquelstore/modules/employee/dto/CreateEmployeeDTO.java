@@ -1,7 +1,7 @@
 package com.ada.victorborzaquelstore.modules.employee.dto;
 
-import com.ada.victorborzaquelstore.modules.employee.enums.DepartmentType;
-import com.ada.victorborzaquelstore.modules.employee.enums.EmployeeRole;
+import com.ada.victorborzaquelstore.modules.employee.DepartmentType;
+import com.ada.victorborzaquelstore.modules.employee.EmployeeRole;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;

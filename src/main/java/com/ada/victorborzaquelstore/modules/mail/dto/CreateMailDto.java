@@ -1,6 +1,6 @@
 package com.ada.victorborzaquelstore.modules.mail.dto;
 
-import com.ada.victorborzaquelstore.modules.mail.enums.MailStatus;
+import com.ada.victorborzaquelstore.modules.mail.MailStatus;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;

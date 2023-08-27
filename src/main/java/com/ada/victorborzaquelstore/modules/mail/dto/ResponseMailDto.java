@@ -1,6 +1,6 @@
 package com.ada.victorborzaquelstore.modules.mail.dto;
 
-import com.ada.victorborzaquelstore.modules.mail.enums.MailStatus;
+import com.ada.victorborzaquelstore.modules.mail.MailStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

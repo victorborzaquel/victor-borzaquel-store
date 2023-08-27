@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
-public class DateUtil {
+public final class DateUtil {
 
   private DateUtil() {
   }
