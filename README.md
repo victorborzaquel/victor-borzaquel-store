@@ -2,11 +2,11 @@
 
 ## Links do Projeto
 
-[- Rotas da aplicação: Postman](https://www.postman.com/victorborzaquel/workspace/victor-borzaquel-store/overview)
+- [Rotas da aplicação: Postman](https://www.postman.com/victorborzaquel/workspace/victor-borzaquel-store/overview)
 
-[- Diagramas: Miro](https://miro.com/app/board/uXjVMqnqTA4=/?share_link_id=161480824535)
+- [Diagramas: Miro](https://miro.com/app/board/uXjVMqnqTA4=/?share_link_id=161480824535)
 
-![img](https://file+.vscode-resource.vscode-cdn.net/Users/v/Developer/avanade-projects/victor-borzaquel-store/.readme/project.png "Project")
+![img](.readme/project.png "Project")
 
 ![img](.readme/der.png "DER")
 
