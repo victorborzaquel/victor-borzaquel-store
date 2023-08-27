@@ -1,30 +1,23 @@
 server:
   port: 8080
 spring:
-  #  datasource:
-  #    driver-class-name: org.postgresql.Driver
-  #    url: jdbc:postgresql://postgres:5432/victor-borzaquel-store
-  #    username: docker
-  #    password: docker
   datasource:
-    url: jdbc:h2:mem:victor-borzaquel-store
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
-  h2:
-    console:
-      enabled: true
-
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://postgres:5432/victor-borzaquel-store
+    username: docker
+    password: docker
+  security:
+    user:
+      name: victor
+      password: 123
   jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: create-drop
-
+      ddl-auto: update
     show-sql: true
-
     properties:
       hibernate:
-        format_sql: true
-
+        format_sql: tru
   mail:
     host: smtp.gmail.com
     port: 587

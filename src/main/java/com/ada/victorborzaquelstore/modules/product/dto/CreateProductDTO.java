@@ -1,17 +1,26 @@
 package com.ada.victorborzaquelstore.modules.product.dto;
 
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@AllArgsConstructor
+import java.math.BigDecimal;
+import java.util.List;
+
+@Data
+@Builder
 @NoArgsConstructor
-@Getter
-@Setter
+@AllArgsConstructor
 public class CreateProductDTO {
   private String title;
   private String description;
-  private Double price;
+  private BigDecimal price;
+  private BigDecimal discountPercentage;
   private Integer stock;
+  private String brand;
+  private String category;
+  private String thumbnail;
+  private List<String> images;
 }

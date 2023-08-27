@@ -1,8 +1,11 @@
 package com.ada.victorborzaquelstore.modules.product.exceptions;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import com.ada.victorborzaquelstore.shared.exceptions.NotFoundException;
 
-@ResponseStatus(reason = "Product not found", code = HttpStatus.NOT_FOUND)
-public class ProductNotFoundException extends RuntimeException {
+public class ProductNotFoundException extends NotFoundException {
+
+  public ProductNotFoundException() {
+    super("Product not found");
+  }
+
 }

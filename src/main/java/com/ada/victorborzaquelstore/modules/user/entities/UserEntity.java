@@ -1,46 +1,65 @@
 package com.ada.victorborzaquelstore.modules.user.entities;
 
-import com.ada.victorborzaquelstore.modules.order.entities.OrderEntity;
+import com.ada.victorborzaquelstore.modules.client.entities.ClientEntity;
+import com.ada.victorborzaquelstore.modules.employee.entities.EmployeeEntity;
+import com.ada.victorborzaquelstore.modules.user.enums.UserRole;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.UUID;
 
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
+import static jakarta.persistence.EnumType.STRING;
+
 @Getter
 @Setter
-@Table(name = "users")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(
+    name = "users",
+    uniqueConstraints = {
+        @UniqueConstraint(name = "unique_per_employee", columnNames = {"id", "employee_id"}),
+        @UniqueConstraint(name = "unique_per_client", columnNames = {"id", "client_id"}),
+    }
+)
 public class UserEntity implements UserDetails {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
 
-  @Column(name = "name")
-  private String name;
+  @Column(name = "first_name", nullable = false)
+  private String firstName;
 
-  @Column(name = "email", unique = true)
+  @Column(name = "last_name", nullable = false)
+  private String lastName;
+
+  @Column(name = "username", unique = true, nullable = false)
+  private String username;
+
+  @Column(name = "email", unique = true, nullable = false)
   private String email;
 
-  @Column(name = "password")
-  private String password;
+  @Column(name = "password_hash", nullable = false)
+  private String passwordHash;
 
-  @Column(name = "cpf", unique = true)
+  @Column(name = "cpf", unique = true, nullable = false)
   private String cpf;
 
-  @OneToMany(mappedBy = "user")
-  private List<AddressEntity> addresses;
+  @Enumerated(STRING)
+  @Builder.Default
+  private UserRole role = UserRole.CLIENT;
 
-  @OneToMany(mappedBy = "user")
-  private List<OrderEntity> orders;
+  @OneToOne
+  @JoinColumn(name = "employee_id", updatable = false)
+  private EmployeeEntity employee;
+
+  @OneToOne
+  @JoinColumn(name = "client_id", updatable = false)
+  private ClientEntity client;
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -48,27 +67,32 @@ public class UserEntity implements UserDetails {
   }
 
   @Override
+  public String getPassword() {
+    return this.passwordHash;
+  }
+
+  @Override
   public String getUsername() {
-    return this.email;
+    return this.username;
   }
 
   @Override
   public boolean isAccountNonExpired() {
-    return false;
+    return true;
   }
 
   @Override
   public boolean isAccountNonLocked() {
-    return false;
+    return true;
   }
 
   @Override
   public boolean isCredentialsNonExpired() {
-    return false;
+    return true;
   }
 
   @Override
   public boolean isEnabled() {
-    return false;
+    return true;
   }
 }
